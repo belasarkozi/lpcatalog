@@ -17,11 +17,11 @@
         <tbody>
         {% for lemez in lemezs|sort((a, b) => a.nev <=> b.nev) %}
             <tr>
-                <td>{{ loop.index0 + 1 }}.</td>
+                <td>{{ loop.index }}.</td>
                 <td>{{ lemez.nev }}</td>
                 <td>
                     {% for szerzo in lemez.getSzerzok() %}
-                        {{ szerzo.nev }}
+                        {{ szerzo.nev }}{% if loop.index != loop.last %},{% endif %}
                     {% endfor %}
                 </td>
                 <td>{{ lemez.getKiado().nev }}</td>
