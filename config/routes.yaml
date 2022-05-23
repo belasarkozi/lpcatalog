@@ -1,3 +1,19 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+app_lemez_index:
+    path:       /
+    controller: App\Controller\LemezController::index
+    methods:    GET
+
+app_lemez_new:
+    path:       /uj
+    controller: App\Controller\LemezController::new
+    methods:    GET|POST
+
+app_kiado_new:
+    path:       /kiado/uj
+    controller: App\Controller\KiadoController::new
+    methods:    GET|POST
+
+app_szerzo_new:
+    path:       /szerzo/uj
+    controller: App\Controller\SzerzoController::new
+    methods:    GET|POST

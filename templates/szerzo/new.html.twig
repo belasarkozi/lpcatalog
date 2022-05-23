@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Új szerző{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+        <h1 class="mt-5 mb-5">Új szerző rögzítése</h1>
+
+        <form name="szerzo" method="POST">
+
+            <input type="hidden" id="szerzo__token" name="szerzo[_token]" value="{{ csrf_token('uj szerzo') }}"/>
+
+            <div class="row mb-3">
+                <label for="szerzo_nev" class="col-sm-3 col-form-label">Szerző neve:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="szerzo_nev" name="szerzo[nev]">
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <button type="submit" class="btn btn-success me-4">Mentés</button>
+                <a class="btn btn-primary" href="{{ path('app_lemez_new') }}">Vissza</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

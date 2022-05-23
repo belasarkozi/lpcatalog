@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Új Lemez{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+        <h1 class="mt-5 mb-5">Új lemez rögzítése</h1>
+
+        <form name="lemez" method="POST">
+
+            <input type="hidden" id="lemez__token" name="lemez[_token]" value="{{ csrf_token('uj lemez') }}"/>
+
+            <div class="row mb-3">
+                <label for="lemez_nev" class="col-sm-3 col-form-label">Lemez:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="lemez_nev" name="lemez[nev]">
+                </div>
+            </div>
+
+            <div class="row mb-3" id="szerzo_csoport">
+                <label for="lemez_szerzok" class="col-sm-3 col-form-label">Szerző:</label>
+                <div class="col-sm-9">
+                    <div class="input-group" id="cloneable">
+                        <select class="form-select col-sm-9" id="lemez_szerzok" name="lemez[szerzok][]">
+                            {% for szerzo in szerzok %}
+                                <option value="{{ szerzo.id }}">{{ szerzo.nev }}</option>
+                            {% endfor %}
+                        </select>
+                        <a class="btn btn-warning col-sm-3" href="{{ path('app_szerzo_new') }}" id="uj_szerzo">új szerző</a>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="" class="btn btn-sm btn-outline-secondary me-4" id="szerzo_hozzaadasa">Szerző hozzáadása</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3" id="kiado_csoport">
+                <label for="lemez_kiado" class="col-sm-3 col-form-label">Kiadó:</label>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <select class="form-select col-sm-9" id="lemez_kiado" name="lemez[kiado]">
+                            {% for kiado in kiadok %}
+                                <option value="{{ kiado.id }}">{{ kiado.nev }}</option>
+                            {% endfor %}
+                        </select>
+                        <a class="btn btn-warning col-sm-3" href="{{ path('app_kiado_new') }}" id="uj_kiado">új kiadó</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="lemez_kiadasi_datum" class="col-sm-3 col-form-label">Kiadás dátuma:</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control" id="lemez_kiadasi_datum" name="lemez[kiadasi_datum]">
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <button type="submit" class="btn btn-success me-4">Mentés</button>
+                <a class="btn btn-primary" href="{{ path('app_lemez_index') }}">Vissza</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

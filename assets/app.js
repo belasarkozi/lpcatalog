@@ -1,12 +1,12 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
-
-// any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
 
-// start the Stimulus application
 import './bootstrap';
+
+$(function() {
+    $('#szerzo_hozzaadasa').on("click", function(e){
+        e.preventDefault();
+        let $clone = $('#cloneable').clone().removeAttr('id').removeClass('col-sm-9').addClass('col-sm-12').addClass('mb-3');
+        $('button', $clone).remove();
+        $clone.insertBefore($(this));
+    });
+});
