@@ -25,7 +25,7 @@
                 <div class="col-sm-9">
                     <div class="input-group" id="cloneable">
                         <select class="form-select col-sm-9" id="lemez_szerzok" name="lemez[szerzok][]">
-                            {% for szerzo in szerzok %}
+                            {% for szerzo in szerzok|sort((a, b) => a.nev <=> b.nev) %}
                                 <option value="{{ szerzo.id }}">{{ szerzo.nev }}</option>
                             {% endfor %}
                         </select>
@@ -42,7 +42,7 @@
                 <div class="col-sm-9">
                     <div class="input-group">
                         <select class="form-select col-sm-9" id="lemez_kiado" name="lemez[kiado]">
-                            {% for kiado in kiadok %}
+                            {% for kiado in kiadok|sort((a, b) => a.nev <=> b.nev) %}
                                 <option value="{{ kiado.id }}">{{ kiado.nev }}</option>
                             {% endfor %}
                         </select>
